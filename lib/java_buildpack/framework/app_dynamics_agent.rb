@@ -44,6 +44,11 @@ module JavaBuildpack
         host_name java_opts, credentials
         port java_opts, credentials
         ssl_enabled java_opts, credentials
+        proxy_host java_opts, credentials
+        proxy_port java_opts, credentials
+        proxy_user java_opts, credentials
+        proxy_password_file java_opts, credentials
+
       end
 
       protected
@@ -94,6 +99,26 @@ module JavaBuildpack
       def ssl_enabled(java_opts, credentials)
         ssl_enabled = credentials['ssl-enabled']
         java_opts.add_system_property 'appdynamics.controller.ssl.enabled', ssl_enabled if ssl_enabled
+      end
+      
+      def proxy_host(java_opts, credentials)
+        proxy_host = credentials['proxy-host']
+        java_opts.add_system_property 'appdynamics.http.proxyHost', proxy_host if proxy_host
+      end
+
+      def proxy_port(java_opts, credentials)
+        proxy_port = credentials['proxy-port']
+        java_opts.add_system_property 'appdynamics.http.proxyPort', proxy_port if proxy_port
+      end
+
+      def proxy_user(java_opts, credentials)
+        proxy_user = credentials['proxy-user']
+        java_opts.add_system_property 'appdynamics.http.proxyUser', proxy_user if proxy_user
+      end
+
+      def proxy_password_file(java_opts, credentials)
+        proxy_password_file = credentials['proxy-password-file']
+        java_opts.add_system_property 'appdynamics.http.proxyPasswordFile', proxy_password_file if proxy_password_file
       end
 
       def tier_name(java_opts, credentials)
