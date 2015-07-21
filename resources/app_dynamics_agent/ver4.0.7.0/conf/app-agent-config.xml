@@ -1,6 +1,3 @@
-Getting files for app stfront in org mtrocchio1-org / space development as mtrocchio1@leadingarch.com...
-OK
-
 <app-agent-configuration>
     <configuration-properties>
         <property name="agent-overwrite" value="false"/>
